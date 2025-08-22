@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="fa">
 <head>
@@ -13,7 +12,7 @@
       margin: 0;
       padding: 0;
     }
-    #id {@A_M_I_R_Z
+    #id {
       display: none;
       text-align: center;
       margin-top: 20%;
@@ -23,13 +22,45 @@
 </head>
 <body>
   <div id="matrix"></div>
-  <div id="id">@YourID</div>
+  <div id="id">@A_M_I_R_Z</div>
 
   <script>
     const matrix = document.getElementById('matrix');
     const id = document.getElementById('id');
     const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*()*&^%';
     const width = 80;
+    const height = 25;
+
+    function getRandomChar() {
+      return chars.charAt(Math.floor(Math.random() * chars.length));
+    }
+
+    function generateMatrixLine() {
+      let line = '';
+      for (let i = 0; i < width; i++) {
+        line += getRandomChar();
+      }
+      return line;
+    }
+
+    function updateMatrix() {
+      let text = '';
+      for (let i = 0; i < height; i++) {
+        text += generateMatrixLine() + '\n';
+      }
+      matrix.textContent = text;
+    }
+
+    let matrixInterval = setInterval(updateMatrix, 50);
+
+    setTimeout(() => {
+      clearInterval(matrixInterval);
+      matrix.style.display = 'none';
+      id.style.display = 'block';
+    }, 5000);
+  </script>
+</body>
+</html>    const width = 80;
     const height = 25;
 
     function getRandomChar() {
